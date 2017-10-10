@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if_else_show</title>
+</head>
+<body>
+    <div id="app">
+        <div v-show="bool">Cinaiet</div>
+        <!--template防止无意义的标签，当执行完后不解析template，不能使用在v-show上-->
+        <template v-if="bool">
+            <div>123</div>
+            <div>456</div>
+            <div>789</div>
+        </template>
+        <!--else要紧跟show和if，不要跨逻辑-->
+        <div v-else>{{name}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                bool:true,
+                name:'Cinaiet'
+            }
+        });
+
+
+    </script>
+</body>
+</html>

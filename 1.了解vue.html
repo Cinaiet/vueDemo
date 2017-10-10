@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>了解vue</title>
+</head>
+<body>
+    <div id="app">
+        <!--解析HTML标签使用三个{{{}}}-->
+        {{{name}}}
+        {{name}}
+    </div>
+    <div id="app1">
+        {{name}}
+        <!--{{}}支持三元表达式-->
+        三元表达式：{{name === 'Hello World' ? 'Cinaiet':name}}
+        <br/>
+        {{6+5*2}}
+        <!--有的时候数据只绑定一次，当数据动态修改的时候就不改变了。-->
+        {{*name}}
+        <br/>
+        {{name}}
+        <br/>
+        <input type="text" v-model="name">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                name:'<h1>Hello World</h1>'
+            }
+        });
+
+        var vm1 = new Vue({
+            el:'#app1',
+            data:{
+                name:'Hello World'
+            }
+        });
+
+    </script>
+</body>
+</html>

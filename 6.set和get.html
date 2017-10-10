@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set和get</title>
+</head>
+<body>
+<div id="app">
+    {{name}}
+    <br>
+    {{c}}
+    <br>
+    {{age}}
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        data:{
+            name:'hello',
+            age:'hah'
+        },
+        computed:{
+            c:{
+                //当给c设置属性的时候，c会立即调用set方法
+                set:function (val) {
+                    //在这里对设置的值进行后续的处理
+                    //val是设置的具体内容
+                    //可以改变原数据的属性
+                    //当c更改的时候才触发
+                    this.name = val;
+                    this.age = '25'
+                },
+                get:function () {
+                    return this.name + 'world';
+                }
+            }
+        }
+    });
+    vm.$mount('#app');
+    //调用设置值
+    setTimeout(function () {
+        vm.c = 'Cinaiet';
+    },2000);
+</script>
+</body>
+</html>

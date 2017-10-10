@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+    <div id="app">
+        <div v-for="book in books">
+            {{$key}} : {{book}}
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                books: {
+                    name: '千百度',
+                    price: '23',
+                    author: '许嵩'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

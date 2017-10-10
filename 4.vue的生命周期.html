@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的生命周期</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <script src="vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'hah'
+            },
+            created:function () {
+                alert('实例已经创建');
+            },
+            beforeCompile:function () {
+                alert('编译之前');
+            },
+            compiled:function () {
+                alert('编译后');
+            },
+            beforeDestroy:function () {
+                alert('销毁前');
+            },
+            destroyed:function () {
+                alert('销毁后');
+            }
+        });
+        //vm.$mount('#app');  //假如需要延迟，可以在之后手动调用 vm.$mount()方法来挂载
+
+        vm.$destroy(); //案例销毁；
+        
+    </script>
+</body>
+</html>

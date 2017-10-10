@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for遍历</title>
+</head>
+<body>
+    <div id="app">
+        <div v-for="book in books">
+            {{$index+1}}  {{book.name}}   {{book.price}}
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            data:{
+                books:[
+                    {
+                        name:'千百度',
+                        price:'23'
+                    },
+                    {
+                        name:'双人旁',
+                        price:'56'
+                    },
+                    {
+                        name:'摄影艺术',
+                        price:'78'
+                    }
+                ]
+            }
+        });
+        vm.$mount('#app');
+    </script>
+
+</body>
+</html>

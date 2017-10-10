@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双重循环</title>
+</head>
+<body>
+    <!--这个有问题，待确认。-->
+    <div id="app">
+        <div v-for="(index , book) in books">
+            第一层  {{book.name}} {{index}}
+            <div v-for="text in book.name">
+                父级  {{text}} {{$index}}
+            </div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {
+                        name:[
+                            '素颜','叹服','通关'
+                        ],
+                        price:'23'
+                    },
+                    {
+                        name:['双人旁','千百度','庐州月','微博控'],
+                        price:'56'
+                    },
+                    {
+                        name:['摄影艺术','深夜书店','雅俗共赏'],
+                        price:'78'
+                    }
+                ]
+            }
+        });
+    </script>
+
+</body>
+</html>

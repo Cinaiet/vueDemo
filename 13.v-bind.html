@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+</head>
+<body>
+    <div id="app">
+        <img :src="src" alt="">
+        <a :href="src1">click jump baidu</a>
+        <div @click="dosome(1,$event)">hello world</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                src:'http://vuejs.org/images/logo.png',
+                src1:'http://www.baidu.com'
+            },
+            //当前要执行的方法写在methods中，用@或者 v-on进行绑定
+            //当我们不进行参数的传递，不用写(),若有传参，需  方法名(param)
+            methods:{
+                dosome:function (e,ev) {
+                    console.log(ev);
+                    alert(e);
+                }
+            }
+        });
+        //v-bind 简写 :
+    </script>
+</body>
+</html>

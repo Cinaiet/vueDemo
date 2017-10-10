@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue暴露的方法</title>
+</head>
+<body>
+    <div id="app">
+        第一个{{message}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var message = {
+            message :'Cinaiet'
+        };
+        var vm = new Vue({
+            el:'#app',
+            data:message
+        });
+        console.log(vm.$el);  //对应的就是#app
+
+        vm.$el = document.getElementById('app1');
+        //元素绑定之后是不可以更改的
+        console.log(vm.$data === message);
+        //当前数据等于当前绑定的对象
+
+        message = {
+            message : 'Hello World'
+        };
+        console.log(message);
+        vm.$data = {
+            message :'Hello New world'
+        }; //改变数据底层之后数据就会改变
+    </script>
+
+</body>
+</html>

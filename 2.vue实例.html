@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实例</title>
+</head>
+<body>
+    <div id="app">
+        {{mess.name}}
+        {{mess.age}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var message = {
+            name : '1'
+        };
+        var vm = new  Vue({
+            el:'#app',
+            data:{
+                mess:message
+            }
+        });
+
+        message.name = 'Cinaiet';
+        console.log(vm.mess === message);
+        message.age = 13;
+
+
+        /**
+         *  当vue实例创建之后原本不存在的属性，添加上不会生效
+         *
+         *  vue有要求，不能莫名其妙的添加一些原本不存在的属性
+         * */
+
+    </script>
+</body>
+</html>
