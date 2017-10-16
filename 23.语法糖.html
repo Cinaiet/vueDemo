@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>语法糖</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="data">
+        <parent :message.sync="data"></parent>
+        <template id="parent">
+            parent <input type="text" v-model="message">
+            <div> parent {{message}} {{message2}}</div>
+            <div >parent</div>
+            <ch></ch>
+
+        </template>
+        <template id="child">
+            <div>child</div>
+            <div>child</div>
+        </template>
+    </div>
+
+
+    <script src="vue.js"></script>
+    <script>
+
+        Vue.component('parent',{
+            template:'#parent',
+            props:{
+                'message':{
+                    type:[String],
+                    default:function () {
+                        return 100; //默认值可以不为type类型
+                    },
+                    validator:function (v) {
+                        //验证器
+                        return true;
+                    },
+                    coerce:function (v) {
+                        console.log(v);
+                        return v;
+                    }
+                },
+                'message2':{
+                    default:function () {
+                        return true;
+                    },
+                    coerce:function (v) {
+                        console.log(v);
+                        //强行改变值
+                        return 'Cinaiet'
+                    }
+                }
+            },
+            components:{
+                ch:{
+                    template:'#child'
+                }
+            }
+
+        });
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                data:'who are you'
+            }
+        });
+    </script>
+</body>
+</html>

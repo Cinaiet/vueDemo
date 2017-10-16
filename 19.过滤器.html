@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>过滤器</title>
+    <style>
+        html{
+            font-size: 125%;
+        }
+        .px{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+        }
+        .rem{
+            width: 1rem;
+            height: 1rem;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--参数用空格隔开-->
+        <!--capitalize 定义一个过滤方法，传值操作响应的方法-->
+        {{'abcdefg' | capitalize 4 }}<br>
+        <!--uppercase 所有字符串大写-->
+        {{'abcdefg' | uppercase}}<br>
+        <!--lowercase 所有字符小写-->
+        {{'ABCDFGE' | lowercase}}<br>
+        <!--第一次参数是添加开头符号，第二个是参数，是保留的位数-->
+        {{123.436567834 | currency '$' '3'}}<br>
+        <!--除了1都是单个-->
+        {{6}} {{1 | pluralize 'item'}}<br>
+        <!--最大到9-->
+        {{9 | pluralize 'item' 'item2' 'item3' 'item4' 'item5' 'item6' 'item7' 'item8' 'item9'}}
+
+        <pre>{{json |json 4}}</pre>
+
+        <button @click="flag*= -1">根据正反排序</button>
+        <div v-for="list in arr  | orderBy 'name' flag">
+            {{list.name}}
+        </div>
+
+        {{'asdasdasdasd' | capitalize 2}}
+
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        Vue.filter('capitalize',function (val, begin, end) {
+            return val.slice(0,begin).toUpperCase()+val.slice(begin);
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:-1,
+                arr:[
+                    {name:'jw1',age:1},
+                    {name:'jw2'},
+                    {name:'jw3'},
+                    {name:'jw4',age:1},
+                    {name:'jw5'},
+                    {name:'jw6'},
+                    {name:'jw7',age:1},
+                    {name:'jw8'},
+                    {name:'jw9'}
+                ]
+            }
+        });
+    </script>
+
+</body>
+</html>

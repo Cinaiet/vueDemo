@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <div @click.self="parent">
+            <!--@click.self 使绑定的事件只能作用在自己身上-->
+            父级
+            <div>some</div>
+            <!--@click.stop 阻止事件传播-->
+            <div @click.stop="child">子集</div>
+        </div>
+        <!--@click.prevent 阻止默认事件-->
+        <a href="http://www.baidu.com" @click.prevent>jump baidu</a>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                parent:function () {
+                    alert('这是父级');
+                },
+                child:function () {
+                    alert('这是子集');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

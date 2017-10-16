@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keyCode</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:keyup.b="tap | debounce 2000" v-model="name">
+        <div v-for="l in list" tracy-by="$index">
+            {{l}}
+            <button @click="del(l)">x</button>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.directive('on').keyCodes.b = 66;
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                list:[]
+            },
+            methods:{
+                tap:function () {
+                    if (this.name){
+                        this.list.push(this.name);
+                    }
+                    this.name = '';
+                },
+                del:function (l) {
+                    this.list.$remove(l);
+                }
+            }
+        });
+    </script>
+
+
+</body>
+</html>

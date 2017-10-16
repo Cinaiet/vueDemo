@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+    <style>
+        .red{
+            background: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .orange{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--直接动态引入样式-->
+        <div class="{{style}}">123</div>
+        <!--不是true就是false-->
+        <div v-bind:class="{'red':true,'orange':true}">789</div>
+        <!--绑定样式形式引入-->
+        <div v-bind:class="style">456</div>
+        <!--绑定数组-->
+        <div :class="['red','yellow']">246</div>
+        <!--三元表达式写法-->
+        <div :class="['red',flag? 'orange':'yellow']">135</div>
+
+        <div :class="['red',{yellow:flag},flag ? 'orange' : 'yellow']">798</div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                style:'red',
+                flag :true
+            }
+        });
+    </script>
+</body>
+</html>

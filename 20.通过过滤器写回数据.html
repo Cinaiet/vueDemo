@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过过滤器写回数据</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="text | cap 5">
+        {{text}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.filter('cap',{
+            read:function (val, begin) {
+                return val.slice(0,begin).toUpperCase();
+            },
+            write:function (val) {
+                return val + 123;
+            }
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                text:'kajshdkjasdf'
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot</title>
+</head>
+<body>
+    <div id="app">
+        <com>
+            <div slot="world">world</div>
+            <div slot="die">die</div>
+        </com>
+    </div>
+
+    <template id="tmp">
+        <div>hello</div>
+        <slot name="die"></slot>
+        <slot name="world"></slot>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('com',{
+            template:'#tmp'
+        });
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            }
+        });
+    </script>
+</body>
+</html>
