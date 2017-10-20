@@ -10,6 +10,12 @@
             {{$index+1}}  {{book.name}}   {{book.price}}
         </div>
     </div>
+
+    <div id="vm">
+        <div v-for="(item,index) in items">
+            {{postMessage}} {{index}}  {{item.name}}
+        </div>
+    </div>
     <script src="vue.js"></script>
     <script>
         var vm = new Vue({
@@ -31,6 +37,20 @@
             }
         });
         vm.$mount('#app');
+
+
+        var app = new Vue({
+            el:'#vm',
+            data:{
+                postMessage:'Cinaiet',
+                items:[
+                    {name:'1'},
+                    {name:'2'},
+                    {name:'3'},
+                    {name:'4'}
+                ]
+            }
+        });
     </script>
 
 </body>
