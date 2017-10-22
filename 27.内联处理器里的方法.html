@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内联处理器里的方法</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="say('hi')">hi</button>
+        <br>
+        <br>
+        <button v-on:click="say('你好')">你好</button>
+    </div>
+
+    <script src="vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+                say:function (param) {
+                    alert(param);
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
