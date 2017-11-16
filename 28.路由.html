@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>路由</title>
+</head>
+<body>
+    <div id="app">
+        <h1>hello vue</h1>
+        <p>
+            <!--使用router-link组件来导航-->
+            <router-link to="/foo">go foo</router-link>
+            <br><br>
+            <router-link to="/bar">go bar</router-link>
+        </p>
+        <!--路由匹配到的组件渲染在这里-->
+        <router-view></router-view>
+    </div>
+
+
+    <!--<script src="vue.js"></script>-->
+    <script src="vue.2.5.js"></script>
+
+    <script src="vue-router.js"></script>
+    <script>
+        const Foo = {
+            template:'<div>foo</div>'
+        };
+        const  Bar = {
+            template:'<div>bar</div>'
+        };
+        //定义路由
+        const routes = [
+            {path : '/foo',component:Foo},
+            {path:'/bar',component:Bar}
+        ];
+
+        const router = new VueRouter({
+            routes
+        });
+
+        const app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+</body>
+</html>
