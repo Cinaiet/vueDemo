@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标悬停绑定动态信息</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:title="message">鼠标悬停可看到动态绑定的信息</p>
+    </div>
+    <script src="../vue.2.5.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'页面加载于'+new Date().toLocaleString()
+            }
+        });
+    </script>
+
+
+</body>
+</html>

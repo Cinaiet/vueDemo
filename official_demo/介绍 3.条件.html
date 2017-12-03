@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件 if-else</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="seen">当值为true的时候，就可以看到该值</p>
+    </div>
+    <script src="../vue.2.5.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                seen:true
+            }
+        });
+    </script>
+</body>
+</html>
